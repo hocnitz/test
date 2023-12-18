@@ -1,16 +1,10 @@
 pipeline {
-    agent any
-    stages {
-        // stage('Checkout') {
-        //     steps {
-        //         git 'https://github.com/hocnitz/test.git'
-        //     }
-        // }
-        stage('Install dependencies') {
-            steps {
-                sh 'python3 -m pip install -r requirements.txt'
-            }
+    agent {
+        docker {
+            image 'qnib/pytest'
         }
+    }
+    stages {
         stage('Run tests') {
             steps {
                 sh 'python3 -m unittest tests.py'
