@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Run tests') {
             steps {
-                sh 'python3 -m unittest tests.py'
+                sh 'PYTHONPATH=. pytest'
             }
         }
     }
